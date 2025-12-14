@@ -15,6 +15,13 @@
  */
 package io.github.photowey.plugin4j.plugin.core.util;
 
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Objects;
+
+import io.github.photowey.plugin4j.plugin.core.converter.JsonConverter;
+
 /**
  * {@code Jsons}.
  *
@@ -24,7 +31,48 @@ package io.github.photowey.plugin4j.plugin.core.util;
  */
 public final class Jsons {
 
+    private static JsonConverter jsonConverter;
+
     private Jsons() {
         AssertionErrors.throwz(Jsons.class);
+    }
+
+    public static void register(JsonConverter converter) {
+        jsonConverter = converter;
+    }
+
+    // ----------------------------------------------------------------
+
+    public static <T> T read(String json, Class<T> clazz) {
+        JsonConverter converter = getJsonConverter();
+
+        return converter.parseObject(json, clazz);
+    }
+
+    public static <T> T read(InputStream json, Class<T> clazz) {
+        JsonConverter converter = getJsonConverter();
+
+        return converter.parseObject(json, clazz);
+    }
+
+    public static <T> T read(byte[] json, Class<T> clazz) {
+        JsonConverter converter = getJsonConverter();
+        return converter.parseObject(json, clazz);
+    }
+
+    public static <T> T read(Path path, Class<T> clazz) {
+        try (InputStream input = Files.newInputStream(path)) {
+            return read(input, clazz);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private static JsonConverter getJsonConverter() {
+        if (Objects.isNull(jsonConverter)) {
+            throw new IllegalStateException("JsonConverter not registered");
+        }
+
+        return jsonConverter;
     }
 }

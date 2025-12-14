@@ -15,10 +15,16 @@
  */
 package io.github.photowey.plugin4j.plugin.api;
 
+import java.io.IOException;
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
+import io.github.photowey.plugin4j.plugin.core.context.PluginContext;
 import io.github.photowey.plugin4j.plugin.core.domain.model.Metadata;
+import io.github.photowey.plugin4j.plugin.core.domain.model.PluginResult;
 import io.github.photowey.plugin4j.plugin.core.domain.ordered.Ordered;
+import io.github.photowey.plugin4j.plugin.core.exception.PluginException;
 
 /**
  * {@code Plugin}.
@@ -30,28 +36,6 @@ import io.github.photowey.plugin4j.plugin.core.domain.ordered.Ordered;
 public interface Plugin extends Ordered, Serializable {
 
     /**
-     * Returns the unique name of this plugin.
-     *
-     * <p>
-     * The name should be consistent across different versions of the same plugin
-     * and is typically used for identification and lookup purposes.
-     *
-     * @return the non-null, non-empty name of the plugin
-     */
-    String name();
-
-    /**
-     * Returns the version of this plugin instance.
-     *
-     * <p>
-     * The version string should follow semantic versioning (e.g., "1.2.0")
-     * or another consistent format agreed upon by the plugin ecosystem.
-     *
-     * @return the non-null, non-empty version string of the plugin
-     */
-    String version();
-
-    /**
      * Returns the metadata associated with this plugin.
      *
      * <p>
@@ -61,4 +45,57 @@ public interface Plugin extends Ordered, Serializable {
      * @return a non-null {@link Metadata} object containing plugin details
      */
     Metadata metadata();
+
+    /**
+     * Initialize the plugin with the given context and properties.
+     *
+     * <p>
+     * This method is called once when the plugin is loaded, allowing it to
+     * perform any necessary setup operations before execution.
+     *
+     * @param context the plugin context providing access to the runtime environment
+     */
+    default void init(PluginContext context) {
+        this.init(context, new HashMap<>(0));
+    }
+
+    /**
+     * Initialize the plugin with the given context and properties.
+     *
+     * <p>
+     * This method is called once when the plugin is loaded, allowing it to
+     * perform any necessary setup operations before execution.
+     *
+     * @param context the plugin context providing access to the runtime environment
+     * @param props   configuration properties for the plugin initialization
+     */
+    default void init(PluginContext context, Map<String, Object> props) {
+
+    }
+
+    /**
+     * Execute the plugin's main logic using the provided context.
+     *
+     * <p>
+     * This method contains the core functionality of the plugin and is
+     * invoked when the plugin is triggered for execution.
+     *
+     * @param context the plugin context providing access to the runtime environment
+     * @return a {@link PluginResult} representing the outcome of the execution
+     * @throws PluginException if an error occurs during plugin execution
+     */
+    PluginResult execute(PluginContext context) throws PluginException;
+
+    /**
+     * Clean up resources used by the plugin.
+     *
+     * <p>
+     * This method is called when the plugin is being unloaded or shut down,
+     * allowing it to release any held resources.
+     *
+     * @throws IOException if an I/O error occurs during cleanup
+     */
+    default void close() throws IOException {
+
+    }
 }
