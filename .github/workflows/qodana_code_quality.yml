@@ -28,7 +28,7 @@ jobs:
       - name: 'Qodana Scan'
         # https://github.com/JetBrains/qodana-action/releases
         # v2025.3
-        uses: JetBrains/qodana-action@v2025.2.4
+        uses: JetBrains/qodana-action@v2025.2
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
         with:
