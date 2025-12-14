@@ -52,7 +52,7 @@ public class Metadata implements Serializable {
      * The version of this plugin instance.
      *
      * <p>
-     * The version string should follow semantic versioning (e.g., "1.2.0")
+     * The version string should follow semantic versioning (e.g., "1.0.0")
      * or another consistent format agreed upon by the plugin ecosystem.
      */
     private String version;
@@ -64,4 +64,22 @@ public class Metadata implements Serializable {
      * Additional metadata about the plugin.
      */
     private Map<String, Object> extensions;
+
+    // ----------------------------------------------------------------
+
+    public String getName() {
+        return name;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Map<String, Object> getExtensions() {
+        return extensions;
+    }
 }

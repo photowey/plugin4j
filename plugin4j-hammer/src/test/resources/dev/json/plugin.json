@@ -1,0 +1,14 @@
+{
+    "metadata": {
+        "name": "echo",
+        "version": "1.0.0",
+        "description": "Echo message plugin",
+        "extensions": {}
+    },
+    "className": "io.github.photowey.plugin4j.plugin.manager.samples.EchoPlugin",
+    "capabilities": [
+        "sample",
+        "echo"
+    ],
+    "classpath": []
+}

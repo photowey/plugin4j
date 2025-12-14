@@ -24,7 +24,7 @@ import io.github.photowey.plugin4j.plugin.core.domain.ordered.Ordered;
 import io.github.photowey.plugin4j.plugin.core.domain.ordered.PriorityOrdered;
 
 /**
- * Copy from {@code org.springframework.core.Ordered} in Spring Framework.
+ * Copy from {@code org.springframework.core.OrderComparator} in Spring Framework.
  *
  * <p>
  * {@link Comparator} implementation for {@link Ordered} objects, sorting
@@ -50,9 +50,11 @@ import io.github.photowey.plugin4j.plugin.core.domain.ordered.PriorityOrdered;
  * at the end of a sorted collection in arbitrary order with respect to
  * other objects with the same order value.
  *
+ * <p>
+ * org.springframework.core.annotation.AnnotationAwareOrderComparator
+ *
  * @author Juergen Hoeller
  * @author Sam Brannen
- * @code org.springframework.core.annotation.AnnotationAwareOrderComparator
  * @see Ordered
  * @see PriorityOrdered
  * @see java.util.List#sort(java.util.Comparator)
