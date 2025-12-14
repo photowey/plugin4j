@@ -13,14 +13,34 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.photowey.plugin4j.plugin.core.domain.context;
+package io.github.photowey.plugin4j.plugin.core.context;
+
+import java.util.concurrent.ExecutorService;
 
 /**
- * {@code PluginContext}.
+ * Plugin runtime context, provided by the host framework.
  *
  * @author photowey
  * @version 1.0.0
  * @since 2025/12/14
  */
 public interface PluginContext extends Context {
+
+    /**
+     * Thread pool managed uniformly by the host; plugins should avoid creating their own threads.
+     *
+     * @return the plugin executor
+     */
+    ExecutorService getExecutor();
+
+    // ----------------------------------------------------------------
+
+    /**
+     * Thread pool managed uniformly by the host; plugins should avoid creating their own threads.
+     *
+     * @return the executor service
+     */
+    default ExecutorService executor() {
+        return this.getExecutor();
+    }
 }

@@ -16,6 +16,7 @@
 package io.github.photowey.plugin4j.plugin.core.domain.model;
 
 import java.io.Serializable;
+import java.util.Map;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -39,7 +40,46 @@ public class Metadata implements Serializable {
 
     private static final long serialVersionUID = 4825831164250101797L;
 
+    /**
+     * The plugin name, which must be globally unique.
+     *
+     * <p>
+     * The name should be consistent across different versions of the same plugin
+     * and is typically used for identification and lookup purposes.
+     */
     private String name;
+    /**
+     * The version of this plugin instance.
+     *
+     * <p>
+     * The version string should follow semantic versioning (e.g., "1.0.0")
+     * or another consistent format agreed upon by the plugin ecosystem.
+     */
     private String version;
+    /**
+     * A brief description of the plugin.
+     */
     private String description;
+    /**
+     * Additional metadata about the plugin.
+     */
+    private Map<String, Object> extensions;
+
+    // ----------------------------------------------------------------
+
+    public String getName() {
+        return name;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Map<String, Object> getExtensions() {
+        return extensions;
+    }
 }

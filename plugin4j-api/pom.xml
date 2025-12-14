@@ -13,7 +13,7 @@
     <artifactId>plugin4j-api</artifactId>
 
     <name>${project.groupId}:${project.artifactId}</name>
-    <description>The core module of plugin4j</description>
+    <description>The api module of plugin4j</description>
 
     <!-- @formatter:off -->
     <properties>

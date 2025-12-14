@@ -10,10 +10,10 @@
         <version>${reversion}</version>
     </parent>
 
-    <artifactId>plugin4j-core</artifactId>
+    <artifactId>plugin4j-hammer</artifactId>
 
     <name>${project.groupId}:${project.artifactId}</name>
-    <description>The core module of plugin4j</description>
+    <description>The hammer module of plugin4j</description>
 
     <!-- @formatter:off -->
     <properties>
@@ -22,13 +22,20 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
+            <groupId>io.github.photowey</groupId>
+            <artifactId>plugin4j-api</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

@@ -23,6 +23,7 @@
     <modules>
         <module>plugin4j-api</module>
         <module>plugin4j-core</module>
+        <module>plugin4j-hammer</module>
     </modules>
 
     <licenses>
@@ -74,21 +75,20 @@
         <checkstyle.version>10.21.4</checkstyle.version>
         <maven-checkstyle-plugin.version>3.6.0</maven-checkstyle-plugin.version>
 
+        <jackson-databind.version>2.20.1</jackson-databind.version>
         <lombok.version>1.18.20</lombok.version>
+        <slf4j-api.version>2.0.17</slf4j-api.version>
+        <junit-jupiter-api.version>5.13.4</junit-jupiter-api.version>
     </properties>
     <!-- @formatter:on -->
 
     <dependencies>
+
     </dependencies>
 
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>${lombok.version}</version>
-            </dependency>
-
+            <!-- region -->
             <dependency>
                 <groupId>io.github.photowey</groupId>
                 <artifactId>plugin4j-api</artifactId>
@@ -98,6 +98,34 @@
                 <groupId>io.github.photowey</groupId>
                 <artifactId>plugin4j-core</artifactId>
                 <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.photowey</groupId>
+                <artifactId>plugin4j-hammer</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <!-- endregion -->
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson-databind.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j-api.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-api</artifactId>
+                <version>${junit-jupiter-api.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

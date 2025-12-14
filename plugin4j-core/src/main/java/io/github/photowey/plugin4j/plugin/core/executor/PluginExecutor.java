@@ -13,16 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.photowey.plugin4j.plugin.core.domain.context;
+package io.github.photowey.plugin4j.plugin.core.executor;
 
-import java.io.Serializable;
+import java.util.concurrent.ExecutorService;
 
 /**
- * {@code Context}.
+ * {@code PluginExecutor}.
  *
  * @author photowey
  * @version 1.0.0
  * @since 2025/12/14
  */
-public interface Context extends Serializable {
+public interface PluginExecutor extends ExecutorService {
+    // nothing.
 }
